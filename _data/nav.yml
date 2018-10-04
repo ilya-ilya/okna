@@ -1,11 +1,8 @@
-- name: "Архив"
-  link: "/apo/old"
+- name: "Материалы"
+  link: "/okna/theory"
 
-- name: "1586"
-  link: "/apo/1586"
-
-- name: "982"
-  link: "/apo/982"
+- name: "Домашка"
+  link: "/okna/hprs"
 
 - name: "Культпросвет"
   link: "common"
