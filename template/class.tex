@@ -1,0 +1,148 @@
+\documentclass[a4paper, 11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+%\usepackage{pscyr}
+\usepackage{mathtools}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{graphicx}
+\usepackage[update]{epstopdf}
+\usepackage[nosimple,dots,thmitshape,nodiagram]{dmvn}
+\usepackage[all]{xy}
+
+\textheight = 23.5 cm
+\textwidth = 16.5 cm
+\hoffset = -2cm
+\voffset = -2cm
+\tolerance = 4000
+\begin{document}
+% good reference for equations
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+% At least, because ex counter resets at start of section
+\renewcommand{\theex}{\thesection.\arabic{ex}}
+% better equal by definition
+\renewcommand{\eqdef}{\triangleq}
+
+% Transoceanization
+\renewcommand{\emptyset}{\varnothing}
+\renewcommand{\phi}{\varphi}
+\renewcommand{\epsilon}{\varepsilon}
+
+\newcommand{\Cx}{\mathbb{C}}
+\newcommand{\Hx}{\mathbb{H}}
+\newcommand{\Zm}[1]{\mathbb{Z}_{#1}}
+\newcommand{\fA}{~\forall\;}
+\newcommand{\Ex}{~\exists\;}
+\newcommand{\Exo}{~\exists\,!\;}
+\title{Введение}
+\date{19 октября 2016 г.}
+\author{}
+\maketitle{}
+\section{Графы}
+\begin{df}
+	Пусть задано некоторое конечное множество объектов или элементов, некоторые из
+	которых попарно связаны между собой. Тогда данное множество элементов, а также весь набор связей
+	между этими элементами называются \textit{графом} $G$. В этом случае данные объекты или элементы называются
+	\textit{вершинами графа}, а связи между ними — \textit{рёбрами графа}. Вершины, связанные ребром, называются
+	концами этого ребра. Такие вершины называются \textit{смежными}.
+\end{df}
+\begin{df}
+	\textit{Степенью вершины} называется количество рёбер, выходящих из этой вершины.
+	Если это количество чётно, то вершина называется чётной, в противном случае вершина называется
+	нечётной.
+\end{df}
+\begin{denotes}
+	$G = G(V, E)$, где $V$ -- множество вершин, а $E$ -- множество рёбер.
+
+	Если $v_1, v_2 \in V$ -- вершины, то $(v_1, v_2) \in E$ -- ребро их соединяющее.
+
+	Если $v \in V$ -- вершина графа $G$, то $\deg_G (v)$ -- её степень.
+\end{denotes}
+\begin{problem}
+	Пусть в графе $n$ вершин и каждая соединена с каждой. Сколько в таком графе рёбер?
+\end{problem}
+\begin{solution}
+	Давайте посчитаем концы рёбер.
+	По условию в каждой вершине сходится $n - 1$ ребро, значит всего концов рёбер $n \cdot (n - 1)$.
+	Но заметим, что у каждого ребра ровно два конца, значит рёбер в два раза меньше, чем концов.
+	Следовательно их $\frac{n \cdot (n - 1)}2$.
+\end{solution}
+\begin{answer}
+	$\frac{n \cdot (n - 1)}2$
+\end{answer}
+\begin{note}
+	Это решение, более формальное и сухое, предпочтительнее того, которое рассказывалось на занятии.
+\end{note}
+\begin{df}
+	Граф из предыдущей задачи называется \textit{полным}.
+\end{df}
+\section{Комбинаторика}
+\begin{problem}
+	Пусть имеется $n$ карандашей разного цвета и $n$ детей\footnote{Пояснение на случай,
+	если не совсем ясно: дети считаются различными}. Сколькими способами можно раздать
+	карандаши детям?
+\end{problem}
+\begin{answer}
+	$n!$
+\end{answer}
+\begin{problem}
+	Автомобильные номера в одном регионе РФ состоят либо из 3 букв и 3 цифр, либо из 2 букв и 4
+	цифр, при этом порядок следования букв и цифр в номере фиксирован. Из букв используются не все, а
+	только а, в, е, к, м, н, о, р, с, т, у, х. Какое максимальное число автомобилей может быть в одном регионе?
+\end{problem}
+\begin{answer}
+	$12^3 \cdot 10^3 + 12^2 \cdot 10^4$
+\end{answer}
+\section{Бином Ньютона и треугольник Паскаля}
+\begin{df}
+	Рассмотрим числа $C_n^i$ ($i$ -- верхний индекс -- номер элемента, $n$ -- нижний индекс -- номер строки),
+	\sth $C_{n - 1}^i + C_{n -1}^{i - 1} = C_n^i$, $C_n^0 \bw = C_n^n \bw = 1$, $C_0^0 = 1$.
+\end{df}
+\begin{note}
+	Эти числа называются биномиальными коэффициентами и в скором времени у нас будет отдельный сюжет,
+	посвящённый их свойствам.
+	Но пока вполне хватит и определения.
+\end{note}
+\begin{problem}
+	\begin{enumerate}
+		\item Докажите, что
+			$$
+				(a + b)^n = \sum_{i = 0}^n C_n^i a^i b^{n-i};
+			$$
+		\item Найдите сумму всех элементов $n$\h ой строки треугольника Паскаля.
+	\end{enumerate}
+\end{problem}
+\begin{solution}
+\begin{enumerate}
+	\item Будем доказывать методом математической индукции.
+
+		База. При $n = 0$ получаем, что:
+		$$
+			(a + b)^0 = 1 = \sum_{i = 0}^0 1 \cdot 1 \cdot 1
+		$$
+
+		Шаг. Пусть для $n = k$ утверждение верно, \ie
+		$$
+			(a + b)^k = \sum_{i = 0}^k C_k^i a^i b^{k-i}.
+		$$
+		Тогда:
+		\begin{gather*}
+			(a + b) ^ {k+1} =
+			(a + b) \cdot (a + b)^k \eqvl{пред. инд.}{30}
+			(a + b) \cdot \hr{\sum_{i = 0}^k C_k^i a^i b^{k - i}} = \\
+			= a \cdot \hr{\sum_{i = 0}^k C_k^i a^i b^{k - i}} + b \cdot \hr{\sum_{i = 0}^k C_k^i a^i b^{k - i}} = 
+			\sum_{i = 0}^k C_k^i \cdot a \cdot a^i \cdot b^{k - i} +
+				{\sum_{i = 0}^k C_k^i \cdot a^i \cdot b \cdot b^{k - i}} = \\
+			= C_k^k a^{k + 1} + 
+				\sum_{\substack{i = 1}}^{k} C_k^{i' - 1} \cdot a^{i'} \cdot b^{k + 1 - i'} +
+				C_k^0 b^{k + 1} +
+				\sum_{i = 1}^{k} C_k^{i} \cdot a^{i} \cdot b^{k + 1 - i} = \\
+			= C_{k+1}^0 a^0 b^{k + 1} + 
+				\sum_{i = 1}^{k} \hr{C_k^{i} + C_k^{i - 1}}\cdot a^{i} \cdot b^{k + 1 - i}
+				+ C_{k+1}^{k+1} a^{k+1} b^0 = \\
+			= \sum_{i = 0}^{k + 1} C_{k+1}^i a^i b^{k+1-i}
+		\end{gather*}
+	\item Одна из домашних задачек.
+\end{enumerate}
+\end{solution}
+\end{document}

@@ -1,0 +1,61 @@
+\documentclass[a4paper, 11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+%\usepackage{pscyr}
+\usepackage{mathtools}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{graphicx}
+\usepackage[update]{epstopdf}
+\usepackage[nosimple,dots,thmitshape,nodiagram]{dmvn}
+\usepackage[all]{xy}
+
+\textheight = 23.5 cm
+\textwidth = 16.5 cm
+\hoffset = -2cm
+\voffset = -2cm
+\tolerance = 4000
+\begin{document}
+% good reference for equations
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+% At least, because ex counter resets at start of section
+\renewcommand{\theex}{\thesection.\arabic{ex}}
+% better equal by definition
+\renewcommand{\eqdef}{\triangleq}
+
+% Transoceanization
+\renewcommand{\emptyset}{\varnothing}
+\renewcommand{\phi}{\varphi}
+\renewcommand{\epsilon}{\varepsilon}
+
+\newcommand{\Cx}{\mathbb{C}}
+\newcommand{\Hx}{\mathbb{H}}
+\newcommand{\Zm}[1]{\mathbb{Z}_{#1}}
+\newcommand{\fA}{~\forall\;}
+\newcommand{\Ex}{~\exists\;}
+\newcommand{\Exo}{~\exists\,!\;}
+\title{Введение. Домашка}
+\date{19 октября 2016 г.}
+\author{}
+\maketitle{}
+\section{Домашнее задание}
+\begin{problem}
+	Как и почему можно определить $0^0$?
+\end{problem}
+\begin{problem}
+	Не производя вычислений найдите $6! \cdot 56$.
+\end{problem}
+\begin{problem}
+	Существует ли граф, содержащий более одной вершины, никакие две вершины которого не имеют
+	одинаковой степени?
+\end{problem}
+\begin{problem}
+	Меню в школьном буфете постоянно и состоит из $n$ разных блюд.
+	Петя хочет каждый день выбирать себе завтрак по-новому (за раз он может съесть от 0 до $n$ разных блюд).
+	а) Сколько дней ему удастся это делать?
+	б) Сколько блюд он съест за это время?
+\end{problem}
+\begin{problem}
+	Посчитайте сумму элементов $n$\h ой строки треугоьника Пскаля.
+\end{problem}
+\end{document}
