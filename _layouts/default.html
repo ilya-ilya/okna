@@ -52,6 +52,9 @@
     {% else %}
         <meta name="twitter:image" content="{{ site.profile_picture }}">
     {% endif %}
+    {% if page.use_math %}
+      {% include mathjax_support %}
+    {% endif %}
 </head>
 <body>
     <div class="wrapper">
@@ -93,4 +96,10 @@
           ga('send', 'pageview');
         </script>
     {% endif %}
+    <div class="container-narrow">
+      <div class="content">
+        {{ content }}
+      </div>
+      <hr/>
+    </div>
 </body>
